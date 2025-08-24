@@ -1,4 +1,13 @@
 public class Payment {
-    String provider; double amount;
-    Payment(String p, double a){ provider=p; amount=a; }
+    PaymentState provider; 
+    double amount;
+    Payment(PaymentState p, double a){ provider=p; amount=a; }
+
+    public PaymentState getProvider(){
+        return provider;
+    }
+
+    public double getAmount(){
+        return amount;
+    }
 }
