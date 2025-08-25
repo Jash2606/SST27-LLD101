@@ -1,7 +1,12 @@
 public class OrderController {
+    DatabaseService databaseService;
+
+    public OrderController(DatabaseService databaseService) {
+        this.databaseService = databaseService;
+    }
+
     void create(String id){
-        SqlOrderRepository repo = new SqlOrderRepository(); // hard dependency
-        repo.save(id);
+        databaseService.save(id);
         System.out.println("Created order: " + id);
     }
 }
