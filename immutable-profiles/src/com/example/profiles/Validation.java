@@ -17,4 +17,11 @@ public final class Validation {
         Objects.requireNonNull(email, "email");
         if (!email.contains("@")) throw new IllegalArgumentException("invalid email");
     }
+
+    public static String maxLength(String val, int max, String fieldName) {
+        if (val != null && val.length() > max) {
+            return val.substring(0, max);
+        }
+        return val;
+    }
 }
