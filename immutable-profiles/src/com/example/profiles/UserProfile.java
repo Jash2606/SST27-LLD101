@@ -43,7 +43,7 @@ public class UserProfile {
         private boolean marketingOptIn;
         private String twitter;
         private String github;
-        
+
         public UserProfile build() {
             return new UserProfile(this);
         }
