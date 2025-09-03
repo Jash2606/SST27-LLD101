@@ -1,6 +1,6 @@
 package exercise;
 
-public interface Employee {
+public interface EmployeeAdaptor {
   String getId();
   String getFirstName();
   String getLastName();
