@@ -6,12 +6,16 @@ public class App {
         Decoder dec = new Decoder();
         FilterEngine fe = new FilterEngine();
         Encoder enc = new Encoder();
+        LegacySharpen legacySharpen = new LegacySharpen();
+        SharpenAdapter sharpenAdapter = new SharpenAdapter(legacySharpen);
+        VideoPipelineFacade facade = new VideoPipelineFacade(dec, fe, enc, sharpenAdapter);
 
-        Frame[] frames = dec.decode(Path.of("in.mp4"));
-        frames = fe.grayscale(frames);
-        frames = fe.scale(frames, 0.5);
-        // Legacy filter not used due to odd API
-        Path out = enc.encode(frames, Path.of("out.mp4"));
+        // Frame[] frames = dec.decode(Path.of("in.mp4"));
+        // frames = fe.grayscale(frames);
+        // frames = fe.scale(frames, 0.5);
+        // // Legacy filter not used due to odd API
+        // Path out = enc.encode(frames, Path.of("out.mp4"));
+        Path out = facade.process(Path.of("in.mp4"), Path.of("out.mp4"), true, 0.5, 3);
         System.out.println("Wrote " + out);
         // TODO: Replace all above with VideoPipelineFacade.process(...)
     }
