@@ -12,6 +12,21 @@ public class GameDemo {
         base.move();
         base.attack();
 
+        System.out.println("\n--- Buffed (Speed + Damage) ---");
+        Character buffed = new DamageBoost(new SpeedBoost(base, 3), 15);
+        buffed.move();
+        buffed.attack();
+
+        System.out.println("\n--- Shiny (Buffed + GoldenAura) ---");
+        Character shiny = new GoldenAura(buffed);
+        shiny.move();
+        shiny.attack();
+
+        System.out.println("\n--- Without Aura (back to Buffed only) ---");
+        Character withoutAura = buffed;
+        withoutAura.move();
+        withoutAura.attack();
+
         // === YOUR TASKS ===
         // 1) Create CharacterDecorator that implements Character and wraps another Character.
         // 2) Create concrete decorators, for example:
