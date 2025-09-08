@@ -1,1 +1,3 @@
-interface Notifier { void send(String to, String body); }
+interface Notifier { void send(String to, String body);
+
+void notify(String text); }
